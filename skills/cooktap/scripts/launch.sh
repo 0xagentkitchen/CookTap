@@ -4,7 +4,7 @@
 set -euo pipefail
 
 MODE="tab"
-HOST="claude"
+HOST="generic"
 
 for arg in "$@"; do
   case "$arg" in
