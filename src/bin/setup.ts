@@ -221,7 +221,7 @@ function uninstallClaude() {
 function installCodex() {
   log('  Codex CLI: launch supported via npx skills');
   log('  Notify hooks: coming soon (pending Codex hook API verification)');
-  log('  For now, use: npx skills add cooktap/cooktap');
+  log('  For now, use: npx skills add 0xagentkitchen/CookTap');
 }
 
 function uninstallCodex() {
@@ -250,7 +250,7 @@ function uninstallCodex() {
 function installGemini() {
   log('  Gemini CLI: launch supported via npx skills');
   log('  Notify hooks: coming soon (pending Gemini hook event verification)');
-  log('  For now, use: npx skills add cooktap/cooktap');
+  log('  For now, use: npx skills add 0xagentkitchen/CookTap');
 }
 
 function uninstallGemini() {

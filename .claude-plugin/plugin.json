@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Terminal typing micro-game — practice while the AI cooks",
   "author": "CookTap",
-  "homepage": "https://github.com/nickcooktap/cooktap",
-  "repository": "https://github.com/nickcooktap/cooktap",
+  "homepage": "https://github.com/0xagentkitchen/CookTap",
+  "repository": "https://github.com/0xagentkitchen/CookTap",
   "license": "MIT",
   "skills": "skills/cooktap/SKILL.md",
   "hooks": "hooks/hooks.json"

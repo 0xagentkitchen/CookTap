@@ -62,7 +62,7 @@ cooktap setup claude --dry-run
 ### Universal (any CLI)
 
 ```bash
-npx skills add cooktap/cooktap
+npx skills add 0xagentkitchen/CookTap
 ```
 
 This installs a portable SKILL.md that any supported agent can read. The agent can then launch CookTap with `npx cooktap`.

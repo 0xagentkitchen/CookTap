@@ -24,18 +24,18 @@ case "$TARGET" in
   claude) install_claude ;;
   codex)
     echo "Codex CLI: notify hooks coming soon."
-    echo "  For launch support: npx skills add cooktap/cooktap"
+    echo "  For launch support: npx skills add 0xagentkitchen/CookTap"
     echo ""
     ;;
   gemini)
     echo "Gemini CLI: notify hooks coming soon."
-    echo "  For launch support: npx skills add cooktap/cooktap"
+    echo "  For launch support: npx skills add 0xagentkitchen/CookTap"
     echo ""
     ;;
   all)
     [[ -d "$HOME/.claude" ]] && install_claude
-    [[ -d "$HOME/.codex" || -d "$HOME/.config/codex" ]] && echo "Codex CLI detected — notify hooks coming soon. Use: npx skills add cooktap/cooktap"
-    [[ -d "$HOME/.gemini" ]] && echo "Gemini CLI detected — notify hooks coming soon. Use: npx skills add cooktap/cooktap"
+    [[ -d "$HOME/.codex" || -d "$HOME/.config/codex" ]] && echo "Codex CLI detected — notify hooks coming soon. Use: npx skills add 0xagentkitchen/CookTap"
+    [[ -d "$HOME/.gemini" ]] && echo "Gemini CLI detected — notify hooks coming soon. Use: npx skills add 0xagentkitchen/CookTap"
     ;;
   *)
     echo "Usage: bash install.sh [claude|codex|gemini|all]"
