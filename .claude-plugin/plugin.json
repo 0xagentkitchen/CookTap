@@ -1,0 +1,11 @@
+{
+  "name": "cooktap",
+  "version": "0.1.0",
+  "description": "Terminal typing micro-game — practice while the AI cooks",
+  "author": "CookTap",
+  "homepage": "https://github.com/nickcooktap/cooktap",
+  "repository": "https://github.com/nickcooktap/cooktap",
+  "license": "MIT",
+  "skills": "skills/cooktap/SKILL.md",
+  "hooks": "hooks/hooks.json"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "cooktap",
+  "version": "0.1.0",
+  "description": "Terminal typing micro-game for AI coding wait states",
+  "main": "dist/cli.js",
+  "bin": {
+    "cooktap": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "skills",
+    "hooks",
+    "assets/CookTap-CardBG.png",
+    "assets/Splash.png",
+    "assets/demo.gif",
+    "assets/ShareCard.png",
+    ".claude-plugin",
+    "install.sh"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "start": "node dist/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "typing",
+    "terminal",
+    "cli",
+    "ai",
+    "vibecoding",
+    "typing-game",
+    "typing-practice",
+    "monkeytype",
+    "cooktap"
+  ],
+  "author": "CookTap",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickcooktap/cooktap.git"
+  },
+  "homepage": "https://github.com/nickcooktap/cooktap",
+  "bugs": {
+    "url": "https://github.com/nickcooktap/cooktap/issues"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.97",
+    "ink": "^5.1.0",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0"
+  }
+}
