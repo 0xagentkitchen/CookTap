@@ -23,7 +23,7 @@ if [[ -x "$LOCAL_BIN" ]]; then
 elif command -v cooktap &>/dev/null; then
   COOKTAP_CMD="clear && cooktap --host $HOST"
 else
-  COOKTAP_CMD="clear && npx cooktap --host $HOST"
+  COOKTAP_CMD="clear && npx -y cooktap --host $HOST"
 fi
 
 detect_terminal() {
