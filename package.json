@@ -1,6 +1,6 @@
 {
   "name": "cooktap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Terminal typing micro-game for AI coding wait states",
   "main": "dist/cli.js",
   "bin": {
