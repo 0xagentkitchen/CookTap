@@ -281,6 +281,28 @@ export const generalPack: ContentPack = {
     { id: 'g:cli:59', text: 'echo $? && exit 0', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'beginner' },
     { id: 'g:cli:60', text: 'mkdir -p src/components/ui && touch src/components/ui/Button.tsx', category: 'cli', tags: ['cli'], difficulty: 'intermediate' },
 
+    // terraform, ansible, gh, brew, common aliases (+20 for 0.1.3)
+    { id: 'g:cli:61', text: 'terraform init && terraform plan -out=tfplan', category: 'cli', tags: ['cli'], difficulty: 'intermediate' },
+    { id: 'g:cli:62', text: 'terraform apply -auto-approve -var-file=prod.tfvars', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:cli:63', text: 'terraform destroy -target=aws_instance.web', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:cli:64', text: 'terraform state list | grep -i module', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:cli:65', text: 'ansible-playbook -i inventory.ini deploy.yml --limit web', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:cli:66', text: 'ansible all -m ping -i hosts', category: 'cli', tags: ['cli'], difficulty: 'intermediate' },
+    { id: 'g:cli:67', text: 'ansible-galaxy install geerlingguy.nginx', category: 'cli', tags: ['cli'], difficulty: 'intermediate' },
+    { id: 'g:cli:68', text: 'gh pr create --title "fix: retry" --body "closes #42"', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:cli:69', text: 'gh pr checkout 123 && gh pr view --web', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:cli:70', text: 'gh issue list --state open --label bug', category: 'cli', tags: ['cli'], difficulty: 'intermediate' },
+    { id: 'g:cli:71', text: 'gh release create v1.4.0 --notes "patch release"', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:cli:72', text: 'gh repo clone org/tools && cd tools', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:cli:73', text: 'brew install --cask visual-studio-code', category: 'cli', tags: ['cli'], difficulty: 'beginner' },
+    { id: 'g:cli:74', text: 'brew update && brew upgrade && brew cleanup', category: 'cli', tags: ['cli'], difficulty: 'beginner' },
+    { id: 'g:cli:75', text: 'brew services restart postgresql@15', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:cli:76', text: 'brew tap homebrew/cask-fonts && brew install font-inter', category: 'cli', tags: ['cli'], difficulty: 'intermediate' },
+    { id: 'g:cli:77', text: 'alias ll="ls -lah" && alias gs="git status"', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:cli:78', text: 'source ~/.zshrc && which node', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'beginner' },
+    { id: 'g:cli:79', text: 'export NODE_ENV=production AWS_REGION=us-east-1', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:cli:80', text: 'history | grep "docker run" | tail -5', category: 'cli', tags: ['cli', 'symbols'], difficulty: 'intermediate' },
+
     // =============================================
     // TECHNIQUE — finger, row, and hand isolation
     // Short, repetitive patterns to build muscle memory.
@@ -349,5 +371,41 @@ export const generalPack: ContentPack = {
 
     // Alternating hands (smooth flow)
     { id: 'g:tech:40', text: 'the their they when there then them', category: 'technique', tags: ['bigrams'], difficulty: 'beginner' },
+
+    // Common English bigrams & trigrams (+10 for 0.1.3)
+    { id: 'g:tech:41', text: 'st nt ng ll le ed es ou is it', category: 'technique', tags: ['bigrams'], difficulty: 'beginner' },
+    { id: 'g:tech:42', text: 'th ch sh wh ph gh kn wr qu ck', category: 'technique', tags: ['bigrams'], difficulty: 'beginner' },
+    { id: 'g:tech:43', text: 'the and ing ion ent tion ness ment', category: 'technique', tags: ['bigrams'], difficulty: 'beginner' },
+    { id: 'g:tech:44', text: 'str scr spr spl shr thr chr phr', category: 'technique', tags: ['bigrams'], difficulty: 'intermediate' },
+    { id: 'g:tech:45', text: 'sight night right fight bright might tight', category: 'technique', tags: ['bigrams', 'common-words'], difficulty: 'intermediate' },
+    { id: 'g:tech:46', text: 'through thought brought fought rough dough', category: 'technique', tags: ['bigrams', 'common-words'], difficulty: 'advanced' },
+    { id: 'g:tech:47', text: 'ld nd rd mb mp nk nt rt st ct', category: 'technique', tags: ['bigrams'], difficulty: 'intermediate' },
+    { id: 'g:tech:48', text: 'really quickly slowly softly gently firmly', category: 'technique', tags: ['bigrams', 'common-words'], difficulty: 'intermediate' },
+    { id: 'g:tech:49', text: 'about after again under where which while', category: 'technique', tags: ['bigrams', 'common-words'], difficulty: 'beginner' },
+    { id: 'g:tech:50', text: 'qu wh th ch sh ph gh ck kn wr', category: 'technique', tags: ['bigrams'], difficulty: 'beginner' },
+
+    // Programming bigrams — operator and bracket combos (+12 for 0.1.3)
+    { id: 'g:tech:51', text: '=> => => => () => () => () =>', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:tech:52', text: '!= != == == === !== != ==', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:tech:53', text: '|| || && && || && || && ||', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:tech:54', text: '() () () () {} {} {} {} [] [] [] []', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'beginner' },
+    { id: 'g:tech:55', text: '({[ ]}) ({[ ]}) ({[ ]}) ({[ ]})', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:tech:56', text: '-> -> => => -> => -> => -> =>', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:tech:57', text: '++ -- += -= *= /= %= **= ||=', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:tech:58', text: '?? ?. ?: ?: ?? ?. ?: ?? ?.', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:tech:59', text: '<= >= << >> <> </> <= >= << >>', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:tech:60', text: '// /* */ // /* */ <!-- --> // /*', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'intermediate' },
+    { id: 'g:tech:61', text: ':: :: :: -> => :: -> => :: ->', category: 'technique', tags: ['bigrams', 'symbols'], difficulty: 'advanced' },
+    { id: 'g:tech:62', text: '#!/bin/bash echo $HOME ${USER} ${PATH}', category: 'technique', tags: ['symbols'], difficulty: 'advanced' },
+
+    // Shift-key isolation — capitals and symbols (+8 for 0.1.3)
+    { id: 'g:tech:63', text: 'Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj', category: 'technique', tags: ['home-row'], difficulty: 'beginner' },
+    { id: 'g:tech:64', text: 'The Quick Brown Fox Jumps Over The Lazy Dog', category: 'technique', tags: ['common-words'], difficulty: 'beginner' },
+    { id: 'g:tech:65', text: 'HTTP GET POST PUT PATCH DELETE HEAD OPTIONS', category: 'technique', tags: ['common-words'], difficulty: 'intermediate' },
+    { id: 'g:tech:66', text: 'JSON XML YAML TOML CSV SQL HTML CSS', category: 'technique', tags: ['common-words'], difficulty: 'intermediate' },
+    { id: 'g:tech:67', text: 'React Vue Svelte Angular Next Nuxt Remix', category: 'technique', tags: ['common-words'], difficulty: 'intermediate' },
+    { id: 'g:tech:68', text: '!@# $%^ &*( )_+ !@# $%^ &*( )_+', category: 'technique', tags: ['symbols', 'number-row'], difficulty: 'advanced' },
+    { id: 'g:tech:69', text: 'React.FC<Props> useState<T> Promise<void>', category: 'technique', tags: ['symbols'], difficulty: 'advanced' },
+    { id: 'g:tech:70', text: 'GET /api/v1/users HTTP/1.1 Host: example.com', category: 'technique', tags: ['symbols', 'number-row'], difficulty: 'advanced' },
   ],
 };
