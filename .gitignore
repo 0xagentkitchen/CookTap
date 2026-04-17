@@ -6,3 +6,4 @@ dist/
 coverage/
 private/
 .claude/settings.local.json
+Promotion.md
