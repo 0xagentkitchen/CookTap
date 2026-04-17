@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { ContentRegistry } from '../content/registry.js';
+import { ContentRegistry, difficultyWeightsForCount } from '../content/registry.js';
 import { generalPack } from '../content/general-pack.js';
 import type { ContentPack, Drill } from '../content/types.js';
 
@@ -177,6 +177,85 @@ describe('ContentRegistry', () => {
       // weight is 5 vs 1 for each of 20 cold = 5/25 = 20%. Allow headroom.
       const share = hotCount / trials;
       expect(share).toBeLessThan(0.35);
+    });
+  });
+
+  describe('difficulty ramp', () => {
+    it('weights beginners heavily for new users', () => {
+      expect(difficultyWeightsForCount(0)).toEqual({ beginner: 3, intermediate: 1, advanced: 0 });
+      expect(difficultyWeightsForCount(19)).toEqual({ beginner: 3, intermediate: 1, advanced: 0 });
+    });
+
+    it('shifts to intermediate emphasis in mid-range', () => {
+      expect(difficultyWeightsForCount(20)).toEqual({ beginner: 1, intermediate: 2, advanced: 1 });
+      expect(difficultyWeightsForCount(59)).toEqual({ beginner: 1, intermediate: 2, advanced: 1 });
+    });
+
+    it('is flat for veterans', () => {
+      expect(difficultyWeightsForCount(60)).toEqual({ beginner: 1, intermediate: 1, advanced: 1 });
+      expect(difficultyWeightsForCount(5000)).toEqual({ beginner: 1, intermediate: 1, advanced: 1 });
+    });
+
+    function mixedPack(): ContentPack {
+      const drills: Drill[] = [];
+      for (let i = 0; i < 15; i++) {
+        drills.push({ id: `b:${i}`, text: `beginner drill ${i} here`, category: 'words', tags: ['common-words'], difficulty: 'beginner' });
+        drills.push({ id: `i:${i}`, text: `intermediate drill ${i} here`, category: 'words', tags: ['common-words'], difficulty: 'intermediate' });
+        drills.push({ id: `a:${i}`, text: `advanced drill ${i} here`, category: 'words', tags: ['common-words'], difficulty: 'advanced' });
+      }
+      return { id: 'mix', name: 'Mix', description: '', drills };
+    }
+
+    it('new users almost never see advanced drills', () => {
+      const reg = new ContentRegistry();
+      reg.register(mixedPack());
+      let advancedHits = 0;
+      const trials = 500;
+      for (let i = 0; i < trials; i++) {
+        reg.resetRecent();
+        const d = reg.getRandomDrill(undefined, { drillCount: 5 });
+        if (d.difficulty === 'advanced') advancedHits++;
+      }
+      expect(advancedHits).toBe(0);
+    });
+
+    it('veterans see a roughly even mix', () => {
+      const reg = new ContentRegistry();
+      reg.register(mixedPack());
+      const counts = { beginner: 0, intermediate: 0, advanced: 0 };
+      const trials = 900;
+      for (let i = 0; i < trials; i++) {
+        reg.resetRecent();
+        const d = reg.getRandomDrill(undefined, { drillCount: 500 });
+        counts[d.difficulty]++;
+      }
+      // Each difficulty should land somewhere in 20-45% range with flat weights
+      for (const share of Object.values(counts)) {
+        expect(share / trials).toBeGreaterThan(0.2);
+        expect(share / trials).toBeLessThan(0.45);
+      }
+    });
+
+    it('falls back to uniform when the ramp would empty the pool', () => {
+      // A category with only advanced drills must still serve a new user
+      const drills: Drill[] = Array.from({ length: 4 }, (_, i) => ({
+        id: `adv:${i}`,
+        text: `advanced only drill ${i}`,
+        category: 'code' as const,
+        tags: ['code-general' as const],
+        difficulty: 'advanced' as const,
+      }));
+      const reg = new ContentRegistry();
+      reg.register({ id: 'only-adv', name: '', description: '', drills });
+      const d = reg.getRandomDrill({ category: 'code' }, { drillCount: 0 });
+      expect(d.difficulty).toBe('advanced');
+    });
+
+    it('accepts heatmap as second arg (back-compat)', () => {
+      const reg = new ContentRegistry();
+      reg.register(generalPack);
+      const drill = reg.getRandomDrill({ category: 'cli' }, { a: 5 });
+      expect(drill.category).toBe('cli');
     });
   });
 });

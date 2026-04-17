@@ -84,6 +84,8 @@ export function App({ hostName = 'generic' }: AppProps) {
   const loadNewDrill = useCallback((category?: Category, timeLimitSec?: number) => {
     const cat = category || activeCategory;
     const heatmap = getErrorHeatmap();
+    const drillCount = loadStats().sessions.length;
+    const selectionOpts = { errorHeatmap: heatmap, drillCount };
 
     let drillText: string;
     let drillId: string;
@@ -92,7 +94,7 @@ export function App({ hostName = 'generic' }: AppProps) {
       const chunks: string[] = [];
       const seen = new Set<string>();
       for (let i = 0; i < 20; i++) {
-        const d = registry.current!.getRandomDrill({ category: cat }, heatmap);
+        const d = registry.current!.getRandomDrill({ category: cat }, selectionOpts);
         if (!seen.has(d.id)) {
           chunks.push(d.text);
           seen.add(d.id);
@@ -102,7 +104,7 @@ export function App({ hostName = 'generic' }: AppProps) {
       drillId = `timed-${timeLimitSec}s-${cat}`;
       setCurrentDrill(null); // Clear so downstream code uses activeCategory
     } else {
-      const drill = registry.current!.getRandomDrill({ category: cat }, heatmap);
+      const drill = registry.current!.getRandomDrill({ category: cat }, selectionOpts);
       drillText = drill.text;
       drillId = drill.id;
       setCurrentDrill(drill);
